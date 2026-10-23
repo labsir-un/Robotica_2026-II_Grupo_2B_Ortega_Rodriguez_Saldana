@@ -60,8 +60,8 @@ Aquí se documentan los laboratorios, avances, resultados y la presentación de 
 - **Nombre completo:** Daniel Alberto Rodríguez Porras
 - **Carrera:** Ingeniería Mecatrónica
 - **Correo institucional:** danrodriguezpo@unal.edu.co
-- **Usuario de GitHub:** [usuariogithub](https://github.com/usuariogithub)
-- **Rol en el equipo:** Multimillonario, Playboy, filantropo.
+- **Usuario de GitHub:** [usuariogithub](https://github.com/DanielRodriguez2004/)
+- **Rol en el equipo:** Multimillonario, playboy, filántropo.
 - **Intereses:** Robótica móvil, visión artificial, automatización
 - **Descripción breve:**  
   Estudiante de Ingeniería Mecatrónica apasionado por la robótica, instrumentación y automatización. Interés en proyectos relacionados con inteligencia artificial y un fuerte componente mecánico.
