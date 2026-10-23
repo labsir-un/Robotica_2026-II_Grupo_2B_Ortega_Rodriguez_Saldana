@@ -21,9 +21,9 @@ La lógica de selección está implementada mediante instrucciones condicionales
 
 ---
 
-## 3. Configuración de la herramienta y sistema de referencia
+## 2. Configuración de la herramienta y sistema de referencia
 
-### 3.1. Herramienta de trabajo — `Tool_Cuy`
+### 2.1. Herramienta de trabajo — `Tool_Cuy`
 
 El programa utiliza una herramienta definida mediante la variable persistente `Tool_Cuy`, de tipo `tooldata`.
 
@@ -38,7 +38,7 @@ Entre sus parámetros se encuentran:
 
 El TCP establece el punto de referencia que RobotStudio utiliza para calcular la posición y orientación del extremo de la herramienta durante los movimientos programados.
 
-### 3.2. Objeto de trabajo — `Workobject_1`
+### 2.2. Objeto de trabajo — `Workobject_1`
 
 El sistema de coordenadas `Workobject_1`, definido mediante una variable persistente de tipo `wobjdata`, representa la referencia espacial utilizada para ejecutar las trayectorias de decoración.
 
@@ -50,11 +50,11 @@ Durante el posicionamiento general se utiliza también `wobj0`, correspondiente 
 
 ---
 
-## 4. Sistema de entradas y salidas digitales
+## 3. Sistema de entradas y salidas digitales
 
 La lógica de control se fundamenta en señales digitales que permiten seleccionar los modos de operación y gestionar determinadas acciones de la celda.
 
-### 4.1. Entradas digitales
+### 3.1. Entradas digitales
 
 | Señal | Modo de operación | Función |
 |---|---|---|
@@ -68,7 +68,7 @@ Las señales son evaluadas desde el procedimiento principal. Cuando una entrada 
 
 Cuando `DI_01` está desactivada, se evalúa `DI_03` antes de `DI_02`.
 
-### 4.2. Salidas digitales
+### 3.2. Salidas digitales
 
 | Señal | Función |
 |---|---|
@@ -82,7 +82,7 @@ La salida `DO_01` se activa antes de ejecutar `EscribirNombres()` y se desactiva
 
 ---
 
-## 5. Procedimiento principal — `main()`
+## 4. Procedimiento principal — `main()`
 
 El procedimiento `main()` constituye el núcleo de supervisión del sistema robotizado.
 
@@ -104,7 +104,7 @@ Las rutinas se ejecutan de forma secuencial. Por lo tanto, una vez iniciado un p
 
 ---
 
-## 6. Modo de operación 1 — Ciclo automático de transporte y decoración
+## 5. Modo de operación 1 — Ciclo automático de transporte y decoración
 
 **Entrada de activación:** `DI_01`
 
@@ -114,7 +114,7 @@ Este modo integra el funcionamiento de la banda transportadora con las trayector
 
 La secuencia implementada se divide en tres etapas: transporte inicial, decoración y transporte de salida.
 
-### 6.1. Transporte inicial del pastel
+### 5.1. Transporte inicial del pastel
 
 Cuando se detecta `DI_01 = 1`, el controlador activa la salida `BWD_Conveyor`, que permanece activa durante 3 segundos.
 
@@ -124,7 +124,7 @@ Este intervalo representa la etapa de transporte y posicionamiento temporal del 
 
 En la implementación analizada, el avance de la banda se controla mediante tiempos predefinidos, sin que el código incluya una condición de detección del pastel mediante sensores de posición.
 
-### 6.2. Activación de la decoración
+### 5.2. Activación de la decoración
 
 Después de la pausa, el controlador activa la salida `DO_01`, utilizada como indicador del estado de decoración.
 
@@ -134,7 +134,7 @@ Durante esta etapa, el robot realiza una secuencia de movimientos programados qu
 
 Al finalizar la rutina, se desactiva `DO_01`.
 
-### 6.3. Transporte de salida
+### 5.3. Transporte de salida
 
 Una vez completada la decoración, el programa activa nuevamente `BWD_Conveyor` durante 2 segundos, con el objetivo de transportar el pastel decorado hacia la etapa posterior del proceso.
 
@@ -142,7 +142,7 @@ Al finalizar el tiempo programado, la señal se desactiva.
 
 El ciclo automático concluye y el programa retorna a la evaluación de las entradas digitales dentro de `main()`.
 
-### 6.4. Resumen de la secuencia
+### 5.4. Resumen de la secuencia
 
 | Etapa | Acción | Señal o procedimiento | Duración |
 |---|---|---|---|
@@ -160,7 +160,7 @@ El tiempo total de espera y transporte programado es de **5,5 segundos**, sin in
 
 ---
 
-## 7. Procedimiento de decoración — `EscribirNombres()`
+## 6. Procedimiento de decoración — `EscribirNombres()`
 
 El procedimiento `EscribirNombres()` organiza la secuencia completa de escritura y dibujo del robot.
 
@@ -168,7 +168,7 @@ Su implementación utiliza una arquitectura modular, en la que cada letra o elem
 
 Esta organización permite modificar una trayectoria específica sin necesidad de reestructurar el procedimiento principal.
 
-### 7.1. Posicionamiento inicial
+### 6.1. Posicionamiento inicial
 
 La rutina comienza ejecutando dos procedimientos:
 
@@ -177,7 +177,7 @@ La rutina comienza ejecutando dos procedimientos:
 
 Estos movimientos permiten establecer una secuencia de acceso a la superficie de trabajo antes de comenzar la escritura.
 
-### 7.2. Escritura de los nombres
+### 6.2. Escritura de los nombres
 
 El programa desarrolla las letras que conforman los nombres de los integrantes mediante procedimientos individuales.
 
@@ -196,7 +196,7 @@ Cada procedimiento contiene una secuencia de posiciones objetivo que define la g
 
 Los nombres de los procedimientos y su orden de ejecución se encuentran establecidos directamente en `EscribirNombres()`.
 
-### 7.3. Figura decorativa del cuy
+### 6.3. Figura decorativa del cuy
 
 Una vez finalizada la secuencia de escritura, el robot ejecuta cuatro procedimientos adicionales destinados a generar una figura decorativa.
 
@@ -209,7 +209,7 @@ Una vez finalizada la secuencia de escritura, el robot ejecuta cuatro procedimie
 
 Estas rutinas utilizan principalmente interpolaciones lineales y circulares, permitiendo representar contornos y curvas mediante movimientos continuos del extremo de la herramienta.
 
-### 7.4. Retorno a HOME
+### 6.4. Retorno a HOME
 
 Al completar la decoración, el procedimiento ejecuta nuevamente `Path_Home()`.
 
@@ -217,7 +217,7 @@ De esta manera, la rutina de escritura comienza y termina con un movimiento haci
 
 ---
 
-## 8. Tipos de movimiento utilizados
+## 7. Tipos de movimiento utilizados
 
 Las trayectorias del proyecto utilizan diferentes instrucciones de movimiento RAPID según las necesidades geométricas y funcionales de cada operación.
 
@@ -228,7 +228,7 @@ Las trayectorias del proyecto utilizan diferentes instrucciones de movimiento RA
 | `MoveC` | Movimiento circular del TCP | Generación de curvas, contornos y detalles decorativos. |
 | `MoveAbsJ` | Movimiento a una configuración articular absoluta | Rutinas de mantenimiento y Farmear Aura. |
 
-### 8.1. Parámetros de movimiento
+### 7.1. Parámetros de movimiento
 
 Las trayectorias de decoración emplean frecuentemente parámetros como:
 
@@ -241,7 +241,7 @@ Algunas rutinas auxiliares utilizan velocidades diferentes, incluyendo `v400`, `
 
 Asimismo, el parámetro `fine` se utiliza en posiciones específicas para exigir una llegada precisa al objetivo, sin utilizar una zona de paso suavizada.
 
-### 8.2. Definición de posiciones
+### 7.2. Definición de posiciones
 
 El programa emplea dos estructuras principales para definir los objetivos del robot.
 
@@ -253,7 +253,7 @@ La utilización de ambas estructuras permite combinar movimientos cartesianos pa
 
 ---
 
-## 9. Modo de operación 2 — Posición de mantenimiento
+## 8. Modo de operación 2 — Posición de mantenimiento
 
 **Entrada de activación:** `DI_02`
 
@@ -275,7 +275,7 @@ Esto evita que el modo se ejecute repetidamente mientras la entrada permanece ac
 
 ---
 
-## 10. Modo de operación 3 — Farmear Aura
+## 9. Modo de operación 3 — Farmear Aura
 
 **Entrada de activación:** `DI_03`
 
@@ -287,27 +287,27 @@ Su propósito es explorar el comportamiento cinemático del robot mediante difer
 
 La secuencia se encuentra estructurada en cinco etapas principales.
 
-### 10.1. Posicionamiento inicial
+### 9.1. Posicionamiento inicial
 
 El robot ejecuta `Path_Home()` y posteriormente se desplaza hacia la configuración `Aura_Vertical`, definida mediante un objetivo articular absoluto.
 
-### 10.2. Apertura y giro
+### 9.2. Apertura y giro
 
 Se realizan movimientos hacia las posiciones `Aura_Abre_Der` y `Aura_Giro_Der`, seguidos de movimientos hacia `Aura_Abre_Izq` y `Aura_Giro_Izq`.
 
 Estas configuraciones generan una secuencia alternada de apertura y rotación del manipulador.
 
-### 10.3. Repetición de giros
+### 9.3. Repetición de giros
 
 El robot repite desplazamientos entre las posiciones de giro derecha e izquierda, utilizando velocidades programadas de movimiento.
 
-### 10.4. Cierre y saludo
+### 9.4. Cierre y saludo
 
 La secuencia continúa hacia `Aura_Abre_Der` y `Aura_Vertical`, para luego ejecutar una serie de movimientos de saludo mediante las posiciones:
 
 `Aura_Saludo_1`, `Aura_Saludo_2`, `Aura_Saludo_3`, `Aura_Saludo_4`, `Aura_Saludo_5`, `Aura_Saludo_6` y `Aura_Saludo_Fin`.
 
-### 10.5. Retorno a HOME
+### 9.5. Retorno a HOME
 
 La rutina concluye mediante una llamada a `Path_Home()`.
 
@@ -315,11 +315,11 @@ Posteriormente, el procedimiento principal espera la desactivación de `DI_03`, 
 
 ---
 
-## 11. Consideraciones técnicas de la implementación
+## 10. Consideraciones técnicas de la implementación
 
 La programación desarrollada permite integrar movimientos industriales, trayectorias complejas y selección de modos mediante señales digitales. Sin embargo, es importante distinguir las funciones implementadas de aquellas que podrían incorporarse en versiones posteriores.
 
-### 11.1. Control temporal de la banda
+### 10.1. Control temporal de la banda
 
 La secuencia automática utiliza tiempos fijos para controlar las etapas de transporte.
 
@@ -329,51 +329,7 @@ Los intervalos empleados son:
 - Pausa previa a la decoración: 0,5 segundos.
 - Transporte de salida: 2 segundos.
 
-La implementación no verifica mediante sensores la llegada del pastel a la zona de trabajo ni su salida de la banda.
+La implementación no verifica mediante sensores la llegada del pastel a la zona de trabajo ni su salida de la banda, por lo que fue necesario tomar tiempos experimentalmente. 
 
-### 11.2. Control de señales de transporte
 
-La salida `FWD_Conveyor` se activa al iniciar `main()`, mientras que el ciclo de decoración activa y desactiva `BWD_Conveyor`.
 
-En la implementación actual, no se desactiva explícitamente `FWD_Conveyor` antes de accionar `BWD_Conveyor` durante la rutina normal.
-
-Es necesario revisar el comportamiento de ambas señales dentro de la lógica de la estación, especialmente si controlan direcciones opuestas de un mismo transportador.
-
-### 11.3. Condición combinada de entradas
-
-El programa incluye una condición destinada a evaluar simultáneamente `DI_01 = 1` y `DI_02 = 1`.
-
-Dicho bloque contiene una orden de desactivación de `FWD_Conveyor`, seguida de la activación de `BWD_Conveyor` durante 5,5 segundos.
-
-Sin embargo, debido al orden de las condiciones `IF` y `ELSEIF`, este bloque no resulta alcanzable durante la ejecución normal: cualquier activación de `DI_01` es atendida primero por el ciclo automático de decoración.
-
-### 11.4. Repetición del ciclo automático
-
-A diferencia de las rutinas de mantenimiento y Farmear Aura, el modo de decoración no contiene una instrucción `WaitDI` para esperar la desactivación de `DI_01`.
-
-Por tanto, si dicha entrada permanece activa al finalizar el ciclo, el programa puede comenzar nuevamente la secuencia de transporte y decoración.
-
-### 11.5. Posibles desarrollos futuros
-
-Como ampliaciones del proyecto, se consideran:
-
-- Implementación de sensores para detectar la presencia y posición del pastel.
-- Incorporación de condiciones de enclavamiento para las señales de movimiento de la banda.
-- Implementación de indicadores de estado independientes para cada modo de operación.
-- Incorporación de una condición de rearme para el ciclo automático.
-- Definición de estados de fallo y recuperación ante interrupciones.
-- Implementación de una interfaz de supervisión para seleccionar y visualizar los modos de operación.
-
-Estas funciones corresponden a oportunidades de mejora y no deben interpretarse como características ya implementadas en el código actual.
-
----
-
-## 12. Conclusiones
-
-El programa RAPID desarrollado permite simular una celda robotizada capaz de ejecutar trayectorias de decoración, controlar señales digitales asociadas al transporte y seleccionar distintas rutinas de operación.
-
-La división en procedimientos independientes favorece la organización del código, su mantenimiento y la reutilización de trayectorias, mientras que el uso de referencias `tooldata` y `wobjdata` permite relacionar los movimientos programados con la configuración geométrica de la celda.
-
-La implementación de `MoveJ`, `MoveL`, `MoveC` y `MoveAbsJ` permite abordar diferentes tipos de movimiento y comprender su aplicación dentro de una tarea de automatización industrial.
-
-Finalmente, el proyecto constituye una base para desarrollar estrategias de integración más avanzadas entre robots industriales, sistemas transportadores y dispositivos de control, incorporando posteriormente sensores, enclavamientos y mecanismos de supervisión.
