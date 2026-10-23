@@ -11,9 +11,9 @@
 
 <h2>Profesores: <br>Pedro Fabián Cárdenas Herrera <br> Manuel Felipe Carranza Montenegro</h2>
 
-<h4>Nombre Integrante 1<br>
-    Nombre Integrante 2<br>
-    Nombre Integrante 3</h4>
+<h4>Daniel Alberto Rodríguez Porras<br>
+    Juan David Saldaña Estupiñan<br>
+    Yeison Esteban Ortega Chacua</h4>
 
 <p>
   <img alt="Ubuntu 24.04 LTS" src="https://img.shields.io/badge/Ubuntu-24.04%20LTS-E95420?logo=ubuntu&logoColor=white">
@@ -57,15 +57,14 @@ Aquí se documentan los laboratorios, avances, resultados y la presentación de 
   <img src="./assets/integrantes/integrante1.jpg" alt="Foto integrante 1" style="border-radius: 50%; width: 180px;"><br>
 </div>
 
-- **Nombre completo:** Nombre Apellido
+- **Nombre completo:** Daniel Alberto Rodríguez Porras
 - **Carrera:** Ingeniería Mecatrónica
-- **Correo institucional:** nombre@unal.edu.co
+- **Correo institucional:** danrodriguezpo@unal.edu.co
 - **Usuario de GitHub:** [usuariogithub](https://github.com/usuariogithub)
-- **Rol en el equipo:** Ej. Integración ROS 2, documentación, simulación
+- **Rol en el equipo:** Multimillonario, Playboy, filantropo.
 - **Intereses:** Robótica móvil, visión artificial, automatización
 - **Descripción breve:**  
-  Escribe aquí una breve presentación personal y académica del integrante.
-
+  Estudiante de Ingeniería Mecatrónica apasionado por la robótica, instrumentación y automatización. Interés en proyectos relacionados con inteligencia artificial y un fuerte componente mecánico.
 ---
 
 ### Integrante 2
