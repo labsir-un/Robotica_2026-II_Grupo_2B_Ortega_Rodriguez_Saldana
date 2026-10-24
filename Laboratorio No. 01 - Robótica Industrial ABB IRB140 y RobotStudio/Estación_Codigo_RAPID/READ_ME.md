@@ -82,6 +82,22 @@ A partir de estos parámetros es posible establecer una comparación de la posic
 | Y | 0.000 | 0.5283 | 0.5283 |
 | Z | 113.000 | 120.581 | 7.5810 |
 
+La diferencia de posición entre los dos sistemas de referencia se calcula mediante la distancia euclidiana:
+
+$$
+e_p=\sqrt{(x_f-x_i)^2+(y_f-y_i)^2+(z_f-z_i)^2}
+$$
+
+Sustituyendo los valores registrados:
+
+$$
+e_p=\sqrt{4.4091^2+0.528303^2+7.581^2}
+$$
+
+$$
+\boxed{e_p=8.7858\ \text{mm}}
+$$
+
 La diferencia de posición entre los dos sistemas de referencia **es de aproximadamente 8.79 mm**, cuya mayor contribución corresponde al eje Z.
 
 Adicionalmente, se identifica una diferencia en las orientaciones definidas mediante los cuaterniones. El TCP ideal incorpora una rotación de 60° alrededor del eje Y, debido a que la geometría de la herramienta, importada desde el modelo CAD hacia RobotStudio, se posicionó inicialmente con respecto al sistema de referencia de origen del robot. Por esta razón, fue necesario aplicar una rotación que compensara la inclinación original de la herramienta en el modelo CAD, con el propósito de alinear los sistemas de referencia y conseguir que sus respectivos ejes Z fueran colineales. De esta manera, la orientación definida en el modelo virtual corresponde a un ajuste geométrico necesario para representar adecuadamente la disposición de la herramienta, y no necesariamente a un error de orientación asociado al procedimiento de calibración física.
@@ -109,7 +125,7 @@ Para corregir este comportamiento, fue necesario ajustar la orientación del sis
 De esta manera, la compensación se realizó directamente sobre el sistema de referencia de trabajo, sin necesidad de modificar individualmente los puntos que conforman las letras y figuras programadas.
 
 Este ajuste evidencia la importancia de definir correctamente los sistemas de referencia durante la implementación física, ya que pequeñas diferencias de orientación pueden producir desviaciones significativas en aplicaciones que requieren contacto entre la herramienta y la superficie de trabajo.
----
+
 
 ### 2.4. Corrección de trayectoria
 
@@ -137,7 +153,7 @@ Esta experiencia permitió identificar dos aspectos fundamentales para la progra
 
 Asimismo, se evidenció la importancia de validar las modificaciones de trayectoria en simulación y mediante pruebas controladas antes de ejecutar el programa a su velocidad normal, especialmente cuando se utilizan herramientas susceptibles a daños mecánicos.
 
-###### 2.5. Simulación de la banda transportadora mediante Smart Components
+### 2.5. Simulación de la banda transportadora mediante Smart Components
 
 Con el propósito de representar el funcionamiento de la banda transportadora dentro del entorno virtual, se implementó un sistema de movimiento utilizando la herramienta **Smart Components** de RobotStudio. Esta funcionalidad permite integrar componentes de simulación, operaciones lógicas y señales digitales para reproducir el comportamiento de dispositivos externos al manipulador.
 
@@ -156,7 +172,7 @@ Aunque la nomenclatura `BWD_Conveyor` hace referencia a *Backward*, en la implem
 
 Para establecer la comunicación entre RAPID y el componente, se realizaron las conexiones de entrada y salida mediante la herramienta **Station Logic** de RobotStudio, vinculando las salidas digitales del controlador virtual `IRB140_6_81` con las entradas correspondientes de `SmartComponent_1`.
 
-**Figura 1. Conexión de las señales digitales entre el controlador IRC5 y el Smart Component.**
+**Figura 3. Conexión de las señales digitales entre el controlador IRC5 y el Smart Component.**
 <img width="613" height="174" alt="image" src="https://github.com/user-attachments/assets/13a48ae3-ec8e-4a1f-b1d0-cda2500ed9f8" />
 
 Esta conexión permite que las instrucciones `Set` y `Reset` ejecutadas desde RAPID modifiquen directamente las entradas digitales del Smart Component y, en consecuencia, controlen el desplazamiento del tablero durante la simulación.
@@ -177,7 +193,7 @@ Los parámetros de configuración utilizados fueron:
 
 Adicionalmente, se implementó una estructura lógica compuesta por dos compuertas **AND** y una compuerta **NOT**. Su función es interpretar las señales digitales recibidas y activar exclusivamente el componente de movimiento correspondiente al sentido seleccionado.
 
-**Figura 2. Configuración interna de los componentes de movimiento y las compuertas lógicas.**
+**Figura 4. Configuración interna de los componentes de movimiento y las compuertas lógicas.**
 <img width="1079" height="403" alt="image" src="https://github.com/user-attachments/assets/7f2188c1-5869-4062-a155-086a750d8b97" />
 
 La lógica implementada responde a las siguientes expresiones booleanas:
