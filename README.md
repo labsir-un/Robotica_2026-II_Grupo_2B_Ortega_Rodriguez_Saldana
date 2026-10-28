@@ -85,15 +85,14 @@ Estudiante de Ingeniería Mecatrónica con interés y habilidades en el área in
 
 ### Integrante 3
 <div align="center">
-  <img src="./assets/integrantes/integrante3.jpg" alt="Foto integrante 3" style="border-radius: 50%; width: 180px;"><br>
+  <img src="./assets/integrantes/Integrante3.jpeg" alt="Foto integrante 3" style="border-radius: 50%; width: 180px;"><br>
 </div>
 
-- **Nombre completo:** Nombre Apellido
+- **Nombre completo:** Yeison Esteban Ortega Chacua
 - **Carrera:** Ingeniería Mecatrónica
-- **Correo institucional:** nombre@unal.edu.co
-- **Usuario de GitHub:** [usuariogithub](https://github.com/usuariogithub)
-- **Rol en el equipo:** Ej. Documentación, pruebas, simulación
-- **Intereses:** Robótica industrial, sistemas autónomos, IA
+- **Correo institucional:** yortegac@unal.edu.co
+- **Usuario de GitHub:** [YeisonOrt14](https://github.com/YeisonOrt14)
+- **Rol en el equipo:** Documentación, programación, pruebas
+- **Intereses:** Robótica industrial, sistemas energéticos e ingeniería social.
 - **Descripción breve:**  
-  Escribe aquí una breve presentación personal y académica del integrante.
-
+  Estudiante de Ingeniería Mecatrónica de la Universidad Nacional de Colombia, con interés en instrumentación, programación, análisis de datos, desarrollo de prototipos y aplicación de conocimientos en automatización, control e innovación tecnológica a desafíos de ingeniería con enfoque social. Ha participado en iniciativas de desarrollo interdisciplinario en educación, salud digital y sensórica.
