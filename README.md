@@ -61,7 +61,7 @@ Aquí se documentan los laboratorios, avances, resultados y la presentación de 
 - **Carrera:** Ingeniería Mecatrónica
 - **Correo institucional:** danrodriguezpo@unal.edu.co
 - **Usuario de GitHub:** [usuariogithub](https://github.com/DanielRodriguez2004/)
-- **Rol en el equipo:** Multimillonario, playboy, filántropo.
+- **Rol en el equipo:** Experto mecánico, master de rutinas, acomodador de pasteles.
 - **Intereses:** Robótica móvil, visión artificial, automatización
 - **Descripción breve:**  
   Estudiante de Ingeniería Mecatrónica apasionado por la robótica, instrumentación y automatización. Interés en proyectos relacionados con inteligencia artificial y un fuerte componente mecánico.
