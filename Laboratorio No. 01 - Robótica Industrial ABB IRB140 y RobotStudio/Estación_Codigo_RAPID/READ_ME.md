@@ -566,5 +566,5 @@ Los intervalos empleados son:
 - Pausa previa a la decoración: 0,5 segundos.
 - Transporte de salida: 2 segundos.
 
-La implementación no verifica mediante sensores la llegada del pastel a la zona de trabajo ni su salida de la banda, por lo que fue necesario tomar tiempos experimentalmente. 
+La implementación no verifica mediante sensores la llegada del pastel a la zona de trabajo ni su salida de la banda, por lo que fue necesario tomar tiempos experimentalmente. Adicionalmente, es importante mencionar que tras ejecutar los primeros intentos en el robot real, y observar diferencias entre el resultado obtenido y la simulación, nos dimos cuenta que además del ángulo de inclinación, la banda transportadora no estaba completamente paralela al robot, sino que tenía cierta inclinación a la izquierda, lo que hacía que el "pastel" se fuera acercando al robot y alterando la decoración. Como recomendación para otros grupos que en un futuro estén desarrollando este laboratorio, primero aseguranse de que la banda esté correctamente posicionada.
 
