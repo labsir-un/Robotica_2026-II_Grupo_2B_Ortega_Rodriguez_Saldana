@@ -1,6 +1,6 @@
-# Análisis del Código. Laboratorio 1.
+Laboratorio 1.
 
-A continuación se abordará con más detalle el código **RAPID** desarrollado por nuestro equipo. 
+A continuación se abordará con más detalle el código **RAPID** desarrollado por nuestro equipo. Para observar el resultado final del código y su implementación en el robot real, lo invitamos a visitar el siguiente link: [LabSIR UNAL](https://www.youtube.com/watch?v=dCyNcPcHMXA)
 
 ## 1. Arquitectura general del programa
 
