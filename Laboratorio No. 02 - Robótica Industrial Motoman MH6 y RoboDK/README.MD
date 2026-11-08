@@ -468,6 +468,11 @@ Sin embargo, sus enfoques son diferentes. RoboDK se caracteriza por su compatibi
 | **Aplicación destacada** | Trayectorias, mecanizado robotizado, fabricación aditiva y aplicaciones multimarca. | Celdas industriales ABB, secuencias automatizadas, sistemas periféricos y puesta en marcha virtual. |
 
 ## 7. Diagrama de Flujo
+
+![Diagrama de flujo](./images/diagram.png)
+
+  
+
 ## 8. Plano de Planta
 ## 9. Rutina
 ### Referencias
