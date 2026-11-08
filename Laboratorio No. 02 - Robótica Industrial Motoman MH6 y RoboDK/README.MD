@@ -118,9 +118,10 @@ Además, ninguna de estas posiciones garantiza por sí sola la ausencia de colis
 ## 3. Tipos de Movimiento
 
 El manipulador industrial Motoman MH6 dispone de seis grados de libertad y puede controlarse manualmente mediante el Teach Pendant DX100. Este dispositivo permite mover cada articulación de manera independiente o controlar la posición y orientación del efector final utilizando diferentes sistemas de coordenadas.
+
 Un elemento importante que debemos tener en cuenta, es que el movimiento articular modifica directamente los ángulos de las articulaciones, mientras que el movimiento cartesiano permite desplazar y orientar el TCP respecto a los ejes X, Y y Z. El controlador calcula los movimientos articulares necesarios para realizar estas operaciones.
 
-##3.1. Preparación para el movimiento manual
+## 3.1. Preparación para el movimiento manual
 Para arrancar el manipulador se debe tener en cuenta los siguientes aspectos:
 1.	Comprobar que el espacio de trabajo esté libre de personas y obstáculos.
 2.	En el cofre general, se energizan los breakers que están identificados como MOTOMAN 
@@ -137,7 +138,7 @@ Para empezar a ejecutar cualquier movimiento, se procede de la siguiente manera:
 
 Es importante diferenciar el selector TEACH/PLAY/REMOTE, que establece el modo general de operación, de la tecla COORD, utilizada para seleccionar cómo se controla el movimiento manual. Para cambiar entre movimiento articular y cartesiano, se mantiene el controlador en TEACH y se utiliza COORD.
 
-##3.2. Selección del sistema de coordenadas
+## 3.2. Selección del sistema de coordenadas
 La tecla COORD permite alternar entre los sistemas de coordenadas disponibles para el movimiento manual.
 
 | Sistema de coordenadas | Función |
@@ -150,10 +151,10 @@ La tecla COORD permite alternar entre los sistemas de coordenadas disponibles pa
 
 Para pasar de articulaciones a cartesiano, se pulsa COORD hasta que aparezca el símbolo de coordenadas cartesianas en la barra de estado. Para regresar, se repite la operación hasta seleccionar el símbolo de articulaciones.
 
-##3.3. Movimiento manual por articulaciones (JOINT)
+## 3.3. Movimiento manual por articulaciones (JOINT)
 En este modo se controla directamente cada uno de los seis ejes articulares del Motoman MH6 los cuales están nombrados de la siguiente manera: S, L, U, R, B, T, 7 y 8.
 
-###Procedimiento
+### Procedimiento
 1.	Mantener el controlador en TEACH.
 2.	Pulsar COORD hasta visualizar el símbolo de articulaciones (Joint Coordinates).
 3.	Seleccionar velocidad (ver punto 4).
@@ -174,7 +175,7 @@ En este modo se controla directamente cada uno de los seis ejes articulares del 
 | **7 (Prismática externa)** | Banda de desplazamiento robot | `Z−/T−` y `Z+/T+` |
 | **8 (Rotacional externa)** | Giro de disco externo | `Z−/T−` y `Z+/T+` |
 
-##3.4. Movimiento manual en coordenadas cartesianas
+## 3.4. Movimiento manual en coordenadas cartesianas
 El modo cartesiano permite controlar el movimiento del TCP utilizando un sistema de referencia con tres ejes ortogonales: X, Y y Z.
 
 Procedimiento para cambiar de JOINT a CARTESIAN
@@ -185,7 +186,7 @@ Procedimiento para cambiar de JOINT a CARTESIAN
 
 A diferencia del modo articular, en este sistema el controlador calcula las variaciones necesarias de las articulaciones para producir el movimiento cartesiano solicitado.
 
-##3.4.1. Movimientos de traslación
+## 3.4.1. Movimientos de traslación
 Para realizar desplazamientos lineales del TCP, se utiliza el primer grupo de teclas del TEACH.
 
 | Teclas | Movimiento |
@@ -197,7 +198,7 @@ Para realizar desplazamientos lineales del TCP, se utiliza el primer grupo de te
 | `Z+/U+` | Traslación en dirección Z positiva. |
 | `Z−/U−` | Traslación en dirección Z negativa. |
 
-##3.4.2. Movimientos de rotación
+## 3.4.2. Movimientos de rotación
 Para modificar la orientación del TCP, se utiliza el segundo grupo de teclas, correspondiente a los ejes de muñeca.
 
 | Teclas | Movimiento |
