@@ -79,7 +79,7 @@ La configuración **Home1** corresponde a la posición de referencia del manipul
 
 Esta configuración permite establecer una postura conocida y reproducible del robot, útil para las operaciones de inspección y mantenimiento indicadas por el fabricante.
 
-![Configuración Home1 del Motoman MH6](imagenes/Home1.png)
+![Configuración Home1 del Motoman MH6](images/Home1.png)
 
 ### Configuración Home2 – Posición de transporte
 
@@ -87,9 +87,9 @@ La configuración **Home2** tiene como propósito reducir el volumen ocupado por
 
 Aunque los valores articulares de esta configuración no se especifican explícitamente en la documentación técnica consultada, fue posible obtener una aproximación mediante el software **RoboDK**, tomando como referencia las ilustraciones proporcionadas por el fabricante.
 
-![Posición de transporte según el fabricante](imagenes/Transporte_Manual.png)
+![Posición de transporte según el fabricante](images/Transporte_Manual.png)
 
-![Configuración Home2 simulada en RoboDK](imagenes/Home2_RoboDK.png)
+![Configuración Home2 simulada en RoboDK](images/Home2_RoboDK.png)
 
 ### Comparación de las posiciones articulares
 
