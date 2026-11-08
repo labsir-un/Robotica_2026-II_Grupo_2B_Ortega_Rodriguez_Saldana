@@ -451,7 +451,7 @@ La simulación permite identificar posibles errores antes de la ejecución, pero
 
 ## 6. ROBOTDK vs RobotStudio
 
-![Comparación entre RoboDK y RobotStudio](images/Comparación RoboDK y ABB RobotStudio.png)
+![Comparación entre RoboDK y RobotStudio](images/RoboDK_RobotStudio.png)
 
 RoboDK y RobotStudio son herramientas orientadas a la simulación, programación y análisis de sistemas robóticos industriales. Ambas permiten desarrollar y evaluar movimientos en entornos virtuales antes de implementarlos sobre manipuladores físicos, mediante un enfoque de programación fuera de línea (Offline Programming, OLP).
 
