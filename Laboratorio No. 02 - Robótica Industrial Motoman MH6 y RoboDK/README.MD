@@ -202,6 +202,47 @@ Entre sus principales funcionalidades se encuentran:
 
 Para el **Motoman MH6**, RoboDK permite desarrollar trayectorias en simulación y generar programas compatibles con el controlador **DX100**.
 
+### 5.2. Programación del Motoman MH6 mediante Python
+
+RoboDK dispone de una interfaz de programación de aplicaciones (**API**) que permite interactuar con el entorno de simulación utilizando lenguajes como Python.
+
+En este proyecto se utiliza **Python junto con la API de RoboDK** para definir y automatizar los movimientos del manipulador Motoman MH6, permitiendo controlar las configuraciones articulares, establecer trayectorias y ejecutar secuencias de movimiento dentro del entorno virtual.
+
+La API permite acceder a los elementos de la estación robótica y ejecutar instrucciones mediante código, sin depender exclusivamente de la interfaz gráfica del software.
+
+Entre sus principales funciones se encuentran:
+
+- **Selección del manipulador:** acceso al modelo del robot dentro de la estación.
+- **Lectura de articulaciones:** obtención de los valores angulares de las seis articulaciones.
+- **Movimientos articulares (`MoveJ`):** desplazamientos entre configuraciones articulares.
+- **Movimientos lineales (`MoveL`):** desplazamientos cartesianos del TCP siguiendo una trayectoria rectilínea.
+- **Configuración de herramientas:** selección del TCP y de los sistemas de referencia.
+- **Automatización:** ejecución de secuencias de movimientos mediante scripts de Python.
+- **Generación de programas:** utilización de postprocesadores para convertir las instrucciones a programas compatibles con el controlador Motoman.
+- **Ejecución remota:** envío de instrucciones al robot físico mediante un Robot Driver compatible, cuando la comunicación está configurada.
+
+#### Integración de Python con la programación offline y online
+
+La programación mediante Python puede utilizarse tanto para simulación como para la ejecución de programas en el manipulador físico.
+
+**Programación offline:**
+
+1. Se definen los movimientos mediante instrucciones de Python.
+2. La API transmite las instrucciones al entorno de RoboDK.
+3. RoboDK simula los movimientos del manipulador.
+4. Se utiliza un postprocesador para generar el programa Motoman en formato `.JBI`.
+5. El archivo generado puede transferirse al controlador DX100.
+
+**Programación online:**
+
+1. Se establece una conexión entre RoboDK y el controlador DX100.
+2. Se configura el Robot Driver correspondiente.
+3. El script de Python ejecuta instrucciones mediante la API.
+4. RoboDK envía los comandos al controlador.
+5. El DX100 ejecuta los movimientos sobre el manipulador físico.
+
+Por lo tanto, Python constituye la interfaz utilizada para desarrollar las instrucciones, mientras que RoboDK proporciona la simulación, la generación de programas y los mecanismos de comunicación con el robot industrial.
+
 ### 5.2. Comunicación entre RoboDK y el Motoman MH6
 
 La comunicación entre RoboDK y el manipulador se realiza a través del controlador **DX100**, el cual interpreta las instrucciones de movimiento y gobierna los servomotores del robot.
@@ -307,7 +348,9 @@ También debe comprobarse que los parámetros del modelo virtual correspondan co
 
 La simulación permite identificar posibles errores antes de la ejecución, pero no reemplaza los procedimientos de seguridad del fabricante ni garantiza por sí sola que una trayectoria sea segura.
 
-En consecuencia, se recomienda realizar la primera ejecución física bajo supervisión, con velocidades reducidas y siguiendo los procedimientos autorizados del laboratorio.
+### 5.7. Diagrama de Comunicación 
+
+
 
 ## 6. ROBOTDK vs RobotStudio
 ## 7. Diagrama de Flujo
@@ -320,7 +363,8 @@ En consecuencia, se recomienda realizar la primera ejecución física bajo super
 3. ABB Robotics. *Product Manual - IRB 140*. Documento 3HAC027400-001, revisión AA, 2024.
 4. ABB Robotics. *Product Specification - IRB 140*. Documento 3HAC041346-001.
 5. Yaskawa Motoman. *DX100 - Manual de instrucciones y programación básica*.
-1. RoboDK. [Robot Programs – Documentación oficial](https://robodk.com/doc/en/Robot-Programs.html).
-2. RoboDK. [Transfer Program](https://robodk.com/doc/en/Robot-Programs-Transfer-Program.html).
-3. RoboDK. [Yaskawa Motoman Robots](https://robodk.com/doc/en/Robots-Motoman.html).
-4. RoboDK. [RoboDK Driver for Yaskawa Motoman](https://robodk.com/doc/en/Robots-Motoman-RoboDK-driver-Yaskawa-Motoman.html).
+6. RoboDK. [Robot Programs – Documentación oficial](https://robodk.com/doc/en/Robot-Programs.html).
+7. RoboDK. [Transfer Program](https://robodk.com/doc/en/Robot-Programs-Transfer-Program.html).
+8. RoboDK. [Yaskawa Motoman Robots](https://robodk.com/doc/en/Robots-Motoman.html).
+9. RoboDK. [RoboDK Driver for Yaskawa Motoman](https://robodk.com/doc/en/Robots-Motoman-RoboDK-driver-Yaskawa-Motoman.html).
+10. RoboDK. [RoboDK – Python API](https://robodk.com/doc/en/RoboDK-API-Python-API.html).
