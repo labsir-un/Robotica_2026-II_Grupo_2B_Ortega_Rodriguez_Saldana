@@ -67,7 +67,7 @@ Las velocidades se expresan en grados por segundo (°/s). Cada valor corresponde
 | Movimiento circular | MOVC | MoveC |
 | Gestión de entradas y salidas | Instrucciones INFORM y configuración de I/O | Instrucciones RAPID y configuración de I/O |
 | Integración con sensores | Mediante interfaces y módulos compatibles | Mediante interfaces y módulos compatibles |
-| Simulación y programación offline | MotoSim | RobotStudio |
+| Simulación y programación offline | MotoSim, RoboDK | RobotStudio, RoboDK |
 
 ### Análisis comparativo
 
