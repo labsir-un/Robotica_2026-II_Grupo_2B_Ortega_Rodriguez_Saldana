@@ -152,7 +152,7 @@ La tecla COORD permite alternar entre los sistemas de coordenadas disponibles pa
 Para pasar de articulaciones a cartesiano, se pulsa COORD hasta que aparezca el símbolo de coordenadas cartesianas en la barra de estado. Para regresar, se repite la operación hasta seleccionar el símbolo de articulaciones.
 
 ## 3.3. Movimiento manual por articulaciones (JOINT)
-![Articulaciones](images/JOINT.png)
+![Articulaciones](images/JOINT.jpg)
 
 En este modo se controla directamente cada uno de los seis ejes articulares del Motoman MH6 los cuales están nombrados de la siguiente manera: S, L, U, R, B, T, 7 y 8.
 
