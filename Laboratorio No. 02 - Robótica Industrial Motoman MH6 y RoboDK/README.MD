@@ -69,29 +69,6 @@ Las velocidades se expresan en grados por segundo (°/s). Cada valor corresponde
 | Integración con sensores | Mediante interfaces y módulos compatibles | Mediante interfaces y módulos compatibles |
 | Simulación y programación offline | MotoSim, RoboDK | RobotStudio, RoboDK |
 
-### Análisis comparativo
-
-**Capacidad de carga:** Ambos manipuladores presentan una carga útil nominal de 6 kg, lo cual permite desarrollar aplicaciones de manipulación de piezas pequeñas, ensamblaje y automatización ligera.
-
-**Alcance:** El Motoman MH6 ofrece un alcance horizontal considerablemente mayor (1422 mm frente a 810 mm), por lo que resulta más adecuado para tareas que necesitan cubrir un espacio de trabajo amplio.
-
-**Precisión:** El ABB IRB 140 presenta una mejor repetibilidad nominal (±0.03 mm frente a ±0.08 mm), característica favorable para tareas que requieren posicionamientos repetitivos de alta precisión.
-
-**Velocidad:** El Motoman MH6 alcanza mayores velocidades en los ejes 1, 4, 5 y 6, mientras que el ABB IRB 140 presenta una mayor velocidad máxima en el eje 3. No obstante, estos valores no permiten determinar directamente cuál robot completa una tarea más rápido.
-
-**Dimensiones:** El ABB IRB 140 presenta una estructura más compacta y menor masa, lo que facilita su instalación en celdas robotizadas con restricciones de espacio.
-
-**Programación:** Los dos robots permiten implementar trayectorias articulares, lineales y circulares. Sin embargo, utilizan entornos diferentes: INFORM en el Motoman MH6 y RAPID en el ABB IRB 140.
-
-### Referencias
-
-1. Yaskawa Motoman. *MOTOMAN-MH6 Instructions*. Manual de especificaciones y operación del manipulador.
-2. Yaskawa Motoman. *MH6/MH6S Technical Specifications*.
-3. ABB Robotics. *Product Manual - IRB 140*. Documento 3HAC027400-001, revisión AA, 2024.
-4. ABB Robotics. *Product Specification - IRB 140*. Documento 3HAC041346-001.
-5. Yaskawa Motoman. *DX100 - Manual de instrucciones y programación básica*.
-
-
 ## 2. Configuraciones Home
 ## 3. Tipos de Movimiento
 ## 4. Niveles de Velocidad 
@@ -100,3 +77,10 @@ Las velocidades se expresan en grados por segundo (°/s). Cada valor corresponde
 ## 7. Diagrama de Flujo
 ## 8. Plano de Planta
 ## 9. Rutina
+### Referencias
+
+1. Yaskawa Motoman. *MOTOMAN-MH6 Instructions*. Manual de especificaciones y operación del manipulador.
+2. Yaskawa Motoman. *MH6/MH6S Technical Specifications*.
+3. ABB Robotics. *Product Manual - IRB 140*. Documento 3HAC027400-001, revisión AA, 2024.
+4. ABB Robotics. *Product Specification - IRB 140*. Documento 3HAC041346-001.
+5. Yaskawa Motoman. *DX100 - Manual de instrucciones y programación básica*.
