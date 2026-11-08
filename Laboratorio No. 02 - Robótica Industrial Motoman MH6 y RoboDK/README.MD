@@ -135,22 +135,6 @@ El indicador muestra el nivel seleccionado mediante una letra.
 
 De esta manera, el operador puede comprobar visualmente la velocidad configurada antes y durante la ejecución de movimientos manuales.
 
-### 4. Relación entre la velocidad y el tipo de movimiento
-
-La velocidad manual seleccionada se utiliza durante el desplazamiento del robot mediante las teclas de operación del *Teach Pendant*.
-
-Su efecto depende del sistema de coordenadas seleccionado:
-
-| Sistema de movimiento | Comportamiento |
-|---|---|
-| **Joint** | Permite mover individualmente las articulaciones del robot. |
-| **Robot / Cartesian** | Permite desplazar el TCP respecto al sistema de referencia del robot. |
-| **Tool** | Permite desplazar el TCP respecto al sistema de coordenadas de la herramienta. |
-| **User** | Permite desplazar el TCP respecto a un sistema de coordenadas definido por el usuario. |
-
-En todos los casos, el nivel seleccionado determina la rapidez del desplazamiento manual, sujeto a las limitaciones del sistema.
-
-
 ## 5. Funciones ROBOTDK
 ## 6. ROBOTDK vs RobotStudio
 ## 7. Diagrama de Flujo
