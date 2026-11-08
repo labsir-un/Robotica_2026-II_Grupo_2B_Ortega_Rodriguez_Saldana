@@ -451,6 +451,8 @@ La simulación permite identificar posibles errores antes de la ejecución, pero
 
 ## 6. ROBOTDK vs RobotStudio
 
+![Comparación entre RoboDK y RobotStudio](images/Comparación RoboDK y ABB RobotStudio.png)
+
 RoboDK y RobotStudio son herramientas orientadas a la simulación, programación y análisis de sistemas robóticos industriales. Ambas permiten desarrollar y evaluar movimientos en entornos virtuales antes de implementarlos sobre manipuladores físicos, mediante un enfoque de programación fuera de línea (Offline Programming, OLP).
 
 Sin embargo, sus enfoques son diferentes. RoboDK se caracteriza por su compatibilidad con robots de múltiples fabricantes y por ofrecer una interfaz de programación flexible mediante lenguajes como Python. Por otra parte, RobotStudio está especializado en el ecosistema ABB y destaca por incorporar un controlador virtual que ejecuta el software de control utilizado en sus robots reales, permitiendo evaluar programas RAPID, señales de entrada y salida y comportamientos de una celda automatizada.
@@ -469,19 +471,19 @@ Sin embargo, sus enfoques son diferentes. RoboDK se caracteriza por su compatibi
 | **Conexión física** | Transferencia de programas y control mediante drivers compatibles. | Comunicación y configuración de controladores ABB reales. |
 | **Aplicación destacada** | Trayectorias, mecanizado robotizado, fabricación aditiva y aplicaciones multimarca. | Celdas industriales ABB, secuencias automatizadas, sistemas periféricos y puesta en marcha virtual. |
 
-## 5.2. Ventajas y limitaciones
-## 5.2.1. RoboDK
+## 6.2. Ventajas y limitaciones
+## 6.2.1. RoboDK
 Su principal ventaja es la flexibilidad para trabajar con diferentes fabricantes sin depender de un único lenguaje de programación. Mediante su API se pueden automatizar movimientos, crear trayectorias, realizar cálculos de posiciones y generar programas para controladores específicos utilizando postprocesadores.
 Esta característica resulta especialmente útil en entornos académicos y de investigación, donde es frecuente trabajar con diferentes manipuladores y desarrollar algoritmos propios.
 Su principal limitación es que la simulación no reproduce necesariamente todos los aspectos internos del controlador físico. La generación y ejecución de programas dependen de la compatibilidad del postprocesador, del driver utilizado y de las funciones disponibles en el controlador real.
 Además, aunque es posible verificar trayectorias y detectar colisiones, la precisión de los resultados depende de la correspondencia entre el modelo virtual y el sistema físico, incluyendo geometrías, herramientas, sistemas de referencia y calibración
 
-## 5.2.2. RobotStudio
+## 6.2.2. RobotStudio
 La principal ventaja de RobotStudio es su integración con el entorno de programación y control de ABB. A diferencia de un simulador principalmente cinemático, utiliza un controlador virtual capaz de ejecutar software de control ABB, permitiendo comprobar el comportamiento de programas RAPID y su interacción con elementos de una celda automatizada.
 Los Smart Components amplían estas posibilidades, pues permiten representar comportamientos de dispositivos periféricos mediante propiedades, señales y conexiones lógicas. De esta manera, pueden desarrollarse simulaciones de bandas transportadoras, actuadores, sensores y secuencias de producción coordinadas con el manipulador.
 Su principal limitación es la dependencia del ecosistema ABB. Aunque pueden incorporarse modelos de otros fabricantes como elementos gráficos, la programación y simulación mediante el controlador virtual están orientadas a los sistemas ABB. Esto reduce su conveniencia para proyectos cuyo objetivo principal sea programar directamente manipuladores de otros fabricantes, como Yaskawa Motoman
 
-# 5.3. Consideraciones del equipo alrededor de ambas herramientas
+# 6.3. Consideraciones del equipo alrededor de ambas herramientas
 A partir de la experiencia adquirida durante el desarrollo de las prácticas, consideramos que ambas herramientas ofrecen ventajas importantes, aunque presentan enfoques diferentes. RoboDK nos pareció una plataforma más intuitiva y accesible, especialmente para la creación y simulación de trayectorias. Además, su integración con Python representa una de sus características más interesantes, ya que permite parametrizar movimientos, generar trayectorias mediante expresiones matemáticas y desarrollar algoritmos personalizados, ofreciendo mayor flexibilidad para experimentar con diferentes soluciones.
 
 Por otra parte, RobotStudio nos dio la impresión de ser una herramienta más completa y especializada, principalmente por su integración con los controladores ABB, la programación RAPID y las posibilidades de simular procesos automatizados mediante señales digitales y Smart Components. Aunque su curva de aprendizaje puede ser mayor, consideramos que ofrece un entorno más estructurado para desarrollar aplicaciones industriales que requieren la coordinación de diferentes dispositivos.
