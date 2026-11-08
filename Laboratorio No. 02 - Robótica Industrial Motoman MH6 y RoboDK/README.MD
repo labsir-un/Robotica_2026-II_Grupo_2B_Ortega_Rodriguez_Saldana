@@ -454,7 +454,7 @@ La simulación permite identificar posibles errores antes de la ejecución, pero
 ![Comparación entre RoboDK y RobotStudio](images/RoboDK_RobotStudio.png)
 
 <p align="center">
-  <img src="imagenes/Robodk_RobotStudio.png"
+  <img src="imagenes/RoboDK_RobotStudio.png"
        alt="Comparación RoboDK y RobotStudio"
        width="600">
 </p>
