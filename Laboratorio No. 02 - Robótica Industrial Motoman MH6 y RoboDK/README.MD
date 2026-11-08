@@ -350,7 +350,7 @@ La simulación permite identificar posibles errores antes de la ejecución, pero
 
 ### 5.7. Diagrama de Comunicación 
 
-
+![Flujo General de Comunicaciones](images/diagrama de Comunicaciones.png)
 
 ## 6. ROBOTDK vs RobotStudio
 ## 7. Diagrama de Flujo
