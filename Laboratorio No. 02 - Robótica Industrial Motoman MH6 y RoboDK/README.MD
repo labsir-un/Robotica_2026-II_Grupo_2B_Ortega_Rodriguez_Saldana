@@ -140,7 +140,7 @@ Es importante diferenciar el selector TEACH/PLAY/REMOTE, que establece el modo g
 
 ## 3.2. Selección del sistema de coordenadas
 La tecla COORD permite alternar entre los sistemas de coordenadas disponibles para el movimiento manual.
-
+![Coordenadas](images/Coordenadas.jpg)
 | Sistema de coordenadas | Función |
 |---|---|
 | **Joint** | Movimiento independiente de las seis articulaciones del robot. |
@@ -152,6 +152,8 @@ La tecla COORD permite alternar entre los sistemas de coordenadas disponibles pa
 Para pasar de articulaciones a cartesiano, se pulsa COORD hasta que aparezca el símbolo de coordenadas cartesianas en la barra de estado. Para regresar, se repite la operación hasta seleccionar el símbolo de articulaciones.
 
 ## 3.3. Movimiento manual por articulaciones (JOINT)
+![Articulaciones](images/JOINT.png)
+
 En este modo se controla directamente cada uno de los seis ejes articulares del Motoman MH6 los cuales están nombrados de la siguiente manera: S, L, U, R, B, T, 7 y 8.
 
 ### Procedimiento
@@ -177,6 +179,7 @@ En este modo se controla directamente cada uno de los seis ejes articulares del 
 
 ## 3.4. Movimiento manual en coordenadas cartesianas
 El modo cartesiano permite controlar el movimiento del TCP utilizando un sistema de referencia con tres ejes ortogonales: X, Y y Z.
+![Cartesianas](images/espacio_trabajo.jpg)
 
 Procedimiento para cambiar de JOINT a CARTESIAN
 1.	Detener cualquier movimiento soltando las teclas de los ejes.
