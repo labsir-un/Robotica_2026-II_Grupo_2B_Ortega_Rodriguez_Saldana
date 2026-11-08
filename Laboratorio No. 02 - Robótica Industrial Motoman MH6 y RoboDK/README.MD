@@ -91,7 +91,7 @@ Los niveles disponibles son los siguientes:
 | **Medium Speed** | `M` | Movimiento continuo a velocidad intermedia. | Posicionamiento general y desplazamientos dentro del espacio de trabajo. |
 | **High Speed** | `H` | Movimiento continuo a la velocidad manual más alta disponible. | Desplazamientos amplios en zonas libres de obstáculos. |
 
-![Selección de velocidad manual](ruta/de/la/imagen_velocidad_manual.png)
+![Selección de velocidad manual](./images/manual.png)
 
 **Figura 1.** Niveles de velocidad manual y teclas de selección `FAST` y `SLOW` del controlador DX100.
 
@@ -127,7 +127,7 @@ El controlador DX100 dispone de un **área de estado** ubicada en la parte super
 
 Entre ellos se encuentra el indicador de **velocidad manual**, identificado con la letra `C` en el esquema de la Figura 2.
 
-![Área de estado del controlador DX100](ruta/de/la/imagen_area_estado.png)
+![Área de estado del controlador DX100](./images/area.png)
 
 **Figura 2.** Área de estado del controlador DX100. El elemento `C` corresponde al indicador de velocidad manual.
 
