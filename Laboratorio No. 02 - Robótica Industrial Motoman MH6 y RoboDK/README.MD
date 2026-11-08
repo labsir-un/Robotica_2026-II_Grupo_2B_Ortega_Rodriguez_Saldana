@@ -450,6 +450,23 @@ La simulación permite identificar posibles errores antes de la ejecución, pero
 ![Flujo General de Comunicaciones](images/diagrama de Comunicaciones.png)
 
 ## 6. ROBOTDK vs RobotStudio
+
+RoboDK y RobotStudio son herramientas orientadas a la simulación, programación y análisis de sistemas robóticos industriales. Ambas permiten desarrollar y evaluar movimientos en entornos virtuales antes de implementarlos sobre manipuladores físicos, mediante un enfoque de programación fuera de línea (Offline Programming, OLP).
+
+Sin embargo, sus enfoques son diferentes. RoboDK se caracteriza por su compatibilidad con robots de múltiples fabricantes y por ofrecer una interfaz de programación flexible mediante lenguajes como Python. Por otra parte, RobotStudio está especializado en el ecosistema ABB y destaca por incorporar un controlador virtual que ejecuta el software de control utilizado en sus robots reales, permitiendo evaluar programas RAPID, señales de entrada y salida y comportamientos de una celda automatizada.
+
+| Característica | RoboDK | RobotStudio |
+|---|---|---|
+| **Fabricante** | RoboDK | ABB Robotics |
+| **Compatibilidad** | Robots de múltiples fabricantes, como Yaskawa Motoman, ABB, FANUC, KUKA y UR. | Especializado en robots y controladores ABB. |
+| **Enfoque principal** | Simulación y programación de trayectorias industriales multimarca. | Simulación, programación y puesta en servicio virtual de sistemas ABB. |
+| **Programación** | Interfaz gráfica y API con Python, C#, C++, MATLAB, entre otros. | Lenguaje RAPID y herramientas de programación propias de ABB. |
+| **Simulación** | Modelos cinemáticos, trayectorias, herramientas, objetos y detección de colisiones. | Simulación de movimientos, lógica de control, señales y procesos de automatización. |
+| **Controlador virtual** | Simula movimientos y genera código mediante postprocesadores, sin emular íntegramente el controlador de cada fabricante. | Utiliza ABB Virtual Controller, que ejecuta el software del controlador ABB. |
+| **Entradas y salidas** | Permite integrar instrucciones y lógica mediante su API y funciones compatibles con el controlador. | Integra señales de E/S, instrucciones RAPID y Smart Components para simular procesos. |
+| **Conexión física** | Transferencia de programas y control mediante drivers compatibles. | Comunicación y configuración de controladores ABB reales. |
+| **Aplicación destacada** | Trayectorias, mecanizado robotizado, fabricación aditiva y aplicaciones multimarca. | Celdas industriales ABB, secuencias automatizadas, sistemas periféricos y puesta en marcha virtual. |
+
 ## 7. Diagrama de Flujo
 ## 8. Plano de Planta
 ## 9. Rutina
