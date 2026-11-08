@@ -70,6 +70,51 @@ Las velocidades se expresan en grados por segundo (°/s). Cada valor corresponde
 | Simulación y programación offline | MotoSim, RoboDK | RobotStudio, RoboDK |
 
 ## 2. Configuraciones Home
+
+El manipulador industrial **Motoman MH6** cuenta con dos configuraciones de referencia: la posición inicial (*Home Position*) y la posición de transporte (*Transporting Position*), denominadas **Home1 y Home2**, respectivamente, dentro del laboratorio.
+
+### Configuración Home1 – Posición inicial
+
+La configuración **Home1** corresponde a la posición de referencia del manipulador, en la cual sus seis articulaciones presentan un desplazamiento angular de 0° respecto a sus respectivas referencias articulares.
+
+Esta configuración permite establecer una postura conocida y reproducible del robot, útil para las operaciones de inspección y mantenimiento indicadas por el fabricante.
+
+![Configuración Home1 del Motoman MH6](imagenes/Home1.png)
+
+### Configuración Home2 – Posición de transporte
+
+La configuración **Home2** tiene como propósito reducir el volumen ocupado por el manipulador mediante el plegado de sus eslabones, facilitando su transporte y almacenamiento.
+
+Aunque los valores articulares de esta configuración no se especifican explícitamente en la documentación técnica consultada, fue posible obtener una aproximación mediante el software **RoboDK**, tomando como referencia las ilustraciones proporcionadas por el fabricante.
+
+![Posición de transporte según el fabricante](imagenes/Transporte_Manual.png)
+
+![Configuración Home2 simulada en RoboDK](imagenes/Home2_RoboDK.png)
+
+### Comparación de las posiciones articulares
+
+| Articulación | Home1 | Home2 (aproximada) |
+|:---:|:---:|:---:|
+| θ₁ (S) | 0° | 0° |
+| θ₂ (L) | 0° | -90° |
+| θ₃ (U) | 0° | -80° |
+| θ₄ (R) | 0° | -90° |
+| θ₅ (B) | 0° | 0° |
+| θ₆ (T) | 0° | 0° |
+
+### ¿Cuál de las dos configuraciones es mejor?
+
+No es posible establecer que una configuración sea universalmente superior a la otra, dado que ambas responden a necesidades operativas diferentes.
+
+- **Home1:** resulta más conveniente como posición de referencia para las actividades de inspección, mantenimiento y verificación de las articulaciones.
+- **Home2:** ofrece ventajas para el transporte y almacenamiento, al permitir una disposición más compacta del manipulador.
+
+Por lo tanto, **la selección de la configuración más adecuada depende de la actividad que se desea realizar** y no exclusivamente de su disposición geométrica.
+
+Además, ninguna de estas posiciones garantiza por sí sola la ausencia de colisiones o la seguridad de una trayectoria, aspectos que deben evaluarse según las condiciones del entorno de trabajo.
+
+> **Nota:** Los valores articulares de Home2 son aproximaciones obtenidas mediante RoboDK y no corresponden a valores oficiales proporcionados por el fabricante.
+
 ## 3. Tipos de Movimiento
 ## 4. Niveles de Velocidad 
 
@@ -135,7 +180,135 @@ El indicador muestra el nivel seleccionado mediante una letra.
 
 De esta manera, el operador puede comprobar visualmente la velocidad configurada antes y durante la ejecución de movimientos manuales.
 
-## 5. Funciones ROBOTDK
+
+## 5. Funcionalidades de RoboDK y comunicación con el Motoman MH6
+
+### 5.1. Descripción general de RoboDK
+
+**RoboDK** es un software de simulación y programación de robots industriales que permite diseñar, visualizar, analizar y ejecutar trayectorias robóticas mediante un entorno virtual tridimensional.
+
+Su principal característica es la **programación fuera de línea (Offline Programming)**, que permite desarrollar programas de movimiento sin necesidad de intervenir directamente sobre el manipulador físico.
+
+Entre sus principales funcionalidades se encuentran:
+
+- **Simulación 3D:** representación del manipulador y de su entorno de trabajo para visualizar los movimientos antes de ejecutarlos físicamente.
+- **Control articular y cartesiano:** modificación de la posición y orientación del robot mediante sus articulaciones o mediante las coordenadas del efector final.
+- **Programación de trayectorias:** creación de secuencias de movimientos articulares, lineales y circulares.
+- **Cinemática robótica:** cálculo de las configuraciones articulares y de la posición y orientación del efector final.
+- **Detección de colisiones:** identificación de posibles interferencias entre el manipulador y los objetos modelados en la estación, cuando se habilita esta funcionalidad.
+- **Configuración de herramientas y referencias:** definición del TCP (*Tool Center Point*) y de los sistemas de coordenadas utilizados durante los movimientos.
+- **Generación de programas:** conversión de las trayectorias simuladas al lenguaje de programación compatible con el controlador del robot.
+- **Comunicación con robots físicos:** transferencia de programas y ejecución remota de movimientos mediante controladores y protocolos de comunicación compatibles.
+
+Para el **Motoman MH6**, RoboDK permite desarrollar trayectorias en simulación y generar programas compatibles con el controlador **DX100**.
+
+### 5.2. Comunicación entre RoboDK y el Motoman MH6
+
+La comunicación entre RoboDK y el manipulador se realiza a través del controlador **DX100**, el cual interpreta las instrucciones de movimiento y gobierna los servomotores del robot.
+
+RoboDK dispone de dos métodos principales para trabajar con el manipulador físico:
+
+#### 5.2.1. Programación offline mediante postprocesador
+
+En este procedimiento, las trayectorias se desarrollan inicialmente dentro del entorno de simulación. Una vez verificadas, RoboDK utiliza un **postprocesador (Post Processor)** para convertir las instrucciones del programa al formato requerido por el controlador.
+
+Para los manipuladores Yaskawa Motoman, los programas pueden generarse como archivos **`.JBI`**, correspondientes al lenguaje de programación **INFORM**.
+
+El procedimiento general consiste en:
+
+1. Seleccionar el modelo Motoman MH6 dentro de RoboDK.
+2. Configurar los sistemas de referencia y la herramienta utilizada.
+3. Definir los puntos y las trayectorias que debe recorrer el manipulador.
+4. Establecer los tipos de movimiento y sus velocidades.
+5. Simular la secuencia y verificar que las posiciones sean alcanzables y que no se presenten colisiones detectables en el modelo.
+6. Seleccionar el postprocesador compatible con Yaskawa Motoman.
+7. Generar el archivo del programa mediante la opción **Generate Robot Program (F6)**.
+8. Transferir el archivo generado al controlador DX100 mediante un mecanismo compatible, como FTP o una memoria USB.
+9. Verificar el programa recibido y ejecutarlo desde el controlador bajo las condiciones de operación y seguridad correspondientes.
+
+En este método, **RoboDK genera el programa, mientras que el controlador DX100 se encarga de interpretar y ejecutar las instrucciones del manipulador**.
+
+#### 5.2.2. Programación online mediante Robot Driver
+
+RoboDK también permite establecer una comunicación directa con el robot mediante un **Robot Driver**, evitando la necesidad de generar y transferir previamente un archivo completo para cada secuencia de movimientos.
+
+Para los controladores Motoman compatibles se encuentra disponible el driver **MotomanHSE**, que utiliza el protocolo *High-Speed Ethernet Server (HSE)* mediante una conexión de red Ethernet (TCP/IP y UDP).
+
+Este mecanismo permite enviar instrucciones desde RoboDK al controlador y consultar información del estado del robot.
+
+En el caso del **DX100**, la documentación indica que se requiere una versión de firmware **2.7.00 o superior** para utilizar este driver, además de habilitar el modo remoto (*Remote*) en el controlador.
+
+El procedimiento general de conexión es:
+
+1. Establecer una conexión Ethernet entre el computador y el controlador DX100.
+2. Verificar que ambos dispositivos tengan una configuración de red compatible.
+3. Abrir la estación del Motoman MH6 en RoboDK.
+4. Seleccionar el robot y acceder a **Connect to robot**.
+5. Introducir la dirección IP del controlador.
+6. Verificar que esté seleccionado el driver **MotomanHSE**.
+7. Habilitar el modo remoto en el controlador, siguiendo las condiciones de seguridad establecidas.
+8. Seleccionar **Connect** para establecer la comunicación.
+9. Utilizar la opción **Run on Robot** para ejecutar las instrucciones desde RoboDK, una vez verificadas las condiciones de operación.
+
+Durante este procedimiento, RoboDK envía las instrucciones de movimiento al controlador, que se encarga de ejecutarlas sobre los actuadores del manipulador.
+
+**Nota:** La disponibilidad de este método depende de la versión del firmware, la configuración del controlador y los permisos de operación habilitados en el laboratorio.
+
+### 5.3. Proceso de transferencia de programas al controlador DX100
+
+La transferencia de programas permite enviar al controlador físico las instrucciones previamente generadas mediante el postprocesador de RoboDK.
+
+De acuerdo con la documentación oficial, este procedimiento puede realizarse mediante FTP u otros mecanismos compatibles.
+
+Para realizar la transferencia desde RoboDK se sigue el procedimiento:
+
+1. Hacer clic derecho sobre el modelo del robot.
+2. Seleccionar **Connect to robot**.
+3. Introducir la dirección IP del controlador DX100.
+4. Seleccionar **More options** y configurar los parámetros FTP, incluidas las credenciales y la ruta de destino, cuando sean necesarias.
+5. Utilizar **Ping** para comprobar la accesibilidad del controlador en la red.
+6. Hacer clic derecho sobre el programa que se desea transferir.
+7. Seleccionar **Send Program to Robot (Ctrl + F6)**.
+8. Verificar el mensaje de confirmación o error de la transferencia.
+
+Es importante aclarar que **la transferencia de un archivo no implica su ejecución inmediata**. El programa debe encontrarse correctamente almacenado en el controlador y debe ejecutarse conforme al procedimiento de operación correspondiente.
+
+Además, la transferencia puede realizarse sin activar el driver utilizado para el control online, puesto que ambos mecanismos cumplen funciones diferentes.
+
+### 5.4. Procesamiento de los movimientos del manipulador
+
+El proceso que permite llevar una trayectoria diseñada en RoboDK hasta el movimiento físico del Motoman MH6 puede describirse mediante las siguientes etapas:
+
+1. **Definición de objetivos:** se establecen las posiciones articulares o las posiciones y orientaciones cartesianas deseadas para el efector final.
+2. **Cálculo cinemático:** RoboDK determina las configuraciones articulares asociadas a los objetivos y considera las restricciones geométricas del modelo.
+3. **Simulación:** se representa el desplazamiento del manipulador para analizar la trayectoria y detectar posibles problemas.
+4. **Preparación de instrucciones:** las trayectorias se convierten en programas compatibles con Motoman mediante un postprocesador, o se preparan para su envío mediante el driver.
+5. **Comunicación:** las instrucciones se transfieren al controlador DX100 mediante el mecanismo seleccionado.
+6. **Ejecución:** el DX100 interpreta las instrucciones y gobierna los servomotores para producir el movimiento físico del manipulador.
+
+En los programas Motoman, las posiciones articulares también pueden representarse mediante pulsos de los encoders. Por este motivo, es importante que RoboDK disponga de la relación correcta entre pulsos y grados para cada articulación, información que puede obtenerse de los parámetros del controlador.
+
+### 5.5. Comparación entre programación offline y online
+
+| Característica | Programación offline | Programación online |
+|---|---|---|
+| Herramienta principal | Postprocesador | Robot Driver |
+| Desarrollo de trayectorias | En RoboDK | En RoboDK |
+| Archivo de programa | Se genera `.JBI` | No es necesario generar previamente el archivo |
+| Comunicación | Transferencia de archivos | Envío de instrucciones mediante HSE |
+| Ejecución | Gestionada por el DX100 | Ordenada desde RoboDK y ejecutada por el DX100 |
+| Aplicación principal | Rutinas y trayectorias previamente definidas | Pruebas, depuración y control remoto |
+
+### 5.6. Consideraciones para la ejecución en el laboratorio
+
+Antes de ejecutar movimientos físicos deben verificarse los límites articulares, la configuración inicial, la calibración del TCP, los sistemas de referencia y las posibles interferencias con el entorno.
+
+También debe comprobarse que los parámetros del modelo virtual correspondan con los del manipulador físico.
+
+La simulación permite identificar posibles errores antes de la ejecución, pero no reemplaza los procedimientos de seguridad del fabricante ni garantiza por sí sola que una trayectoria sea segura.
+
+En consecuencia, se recomienda realizar la primera ejecución física bajo supervisión, con velocidades reducidas y siguiendo los procedimientos autorizados del laboratorio.
+
 ## 6. ROBOTDK vs RobotStudio
 ## 7. Diagrama de Flujo
 ## 8. Plano de Planta
@@ -147,3 +320,7 @@ De esta manera, el operador puede comprobar visualmente la velocidad configurada
 3. ABB Robotics. *Product Manual - IRB 140*. Documento 3HAC027400-001, revisión AA, 2024.
 4. ABB Robotics. *Product Specification - IRB 140*. Documento 3HAC041346-001.
 5. Yaskawa Motoman. *DX100 - Manual de instrucciones y programación básica*.
+1. RoboDK. [Robot Programs – Documentación oficial](https://robodk.com/doc/en/Robot-Programs.html).
+2. RoboDK. [Transfer Program](https://robodk.com/doc/en/Robot-Programs-Transfer-Program.html).
+3. RoboDK. [Yaskawa Motoman Robots](https://robodk.com/doc/en/Robots-Motoman.html).
+4. RoboDK. [RoboDK Driver for Yaskawa Motoman](https://robodk.com/doc/en/Robots-Motoman-RoboDK-driver-Yaskawa-Motoman.html).
