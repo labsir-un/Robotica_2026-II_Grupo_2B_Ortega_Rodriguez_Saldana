@@ -1,4 +1,4 @@
-Laboratorio 2.
+### Laboratorio 2.
 
 ## 1. Cuadro Comparativo
 
