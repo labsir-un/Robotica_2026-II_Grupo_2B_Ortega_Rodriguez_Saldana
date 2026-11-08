@@ -74,7 +74,7 @@ Las velocidades se expresan en grados por segundo (°/s). Cada valor corresponde
 ## 4. Niveles de Velocidad 
 
 
-## Selección de velocidad para movimientos manuales
+### Selección de velocidad para movimientos manuales
 
 El robot **Motoman MH6**, mediante su controlador **DX100**, permite ajustar la velocidad de desplazamiento durante la operación manual desde el *Teach Pendant*. 
 
