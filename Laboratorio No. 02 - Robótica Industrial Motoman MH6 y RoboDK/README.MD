@@ -116,6 +116,102 @@ Además, ninguna de estas posiciones garantiza por sí sola la ausencia de colis
 > **Nota:** Los valores articulares de Home2 son aproximaciones obtenidas mediante RoboDK y no corresponden a valores oficiales proporcionados por el fabricante.
 
 ## 3. Tipos de Movimiento
+
+El manipulador industrial Motoman MH6 dispone de seis grados de libertad y puede controlarse manualmente mediante el Teach Pendant DX100. Este dispositivo permite mover cada articulación de manera independiente o controlar la posición y orientación del efector final utilizando diferentes sistemas de coordenadas.
+Un elemento importante que debemos tener en cuenta, es que el movimiento articular modifica directamente los ángulos de las articulaciones, mientras que el movimiento cartesiano permite desplazar y orientar el TCP respecto a los ejes X, Y y Z. El controlador calcula los movimientos articulares necesarios para realizar estas operaciones.
+
+##3.1. Preparación para el movimiento manual
+Para arrancar el manipulador se debe tener en cuenta los siguientes aspectos:
+1.	Comprobar que el espacio de trabajo esté libre de personas y obstáculos.
+2.	En el cofre general, se energizan los breakers que están identificados como MOTOMAN 
+3.	En el cofre totalizador, se energiza el breaker totalizador.
+4.	Se energiza el controlador DX100 Yaskawa girando la perilla 90° en sentido horario.
+5.	Se toma el TeachPendant con la mano izquierda y pasamos el cable por detrás del cuello.
+
+Para empezar a ejecutar cualquier movimiento, se procede de la siguiente manera:
+1.	Se coloca el selector físico MODE, situado en la parte superior izquierda del Teach Pendant, en la posición TEACH.
+2.	Se verifica que no existan alarmas activas y se desactiva la parada de emergencia (botón rojo en la parte superior derecha) girando en sentido horario.
+3.	Se procede a presionar la tecla SERVO ON READY para preparar la habilitación de los servomotores.
+4.	Presiona el interruptor de habilitación (Botón de Hombre muerto), situado en la parte posterior del Teach Pendant, hasta su posición intermedia y mantenerlo accionado durante el movimiento.
+5.	Seleccionar inicialmente una velocidad manual baja mediante las teclas SLOW y FAST.
+
+Es importante diferenciar el selector TEACH/PLAY/REMOTE, que establece el modo general de operación, de la tecla COORD, utilizada para seleccionar cómo se controla el movimiento manual. Para cambiar entre movimiento articular y cartesiano, se mantiene el controlador en TEACH y se utiliza COORD.
+
+##3.2. Selección del sistema de coordenadas
+La tecla COORD permite alternar entre los sistemas de coordenadas disponibles para el movimiento manual.
+
+| Sistema de coordenadas | Función |
+|---|---|
+| **Joint** | Movimiento independiente de las seis articulaciones del robot. |
+| **Cartesian** | Traslaciones y rotaciones respecto al sistema cartesiano del robot. |
+| **Cylindrical** | Movimiento según coordenadas cilíndricas. |
+| **Tool** | Movimiento respecto a los ejes locales de la herramienta. |
+| **User** | Movimiento respecto a un sistema de coordenadas definido por el usuario. |
+
+Para pasar de articulaciones a cartesiano, se pulsa COORD hasta que aparezca el símbolo de coordenadas cartesianas en la barra de estado. Para regresar, se repite la operación hasta seleccionar el símbolo de articulaciones.
+
+##3.3. Movimiento manual por articulaciones (JOINT)
+En este modo se controla directamente cada uno de los seis ejes articulares del Motoman MH6 los cuales están nombrados de la siguiente manera: S, L, U, R, B, T, 7 y 8.
+
+###Procedimiento
+1.	Mantener el controlador en TEACH.
+2.	Pulsar COORD hasta visualizar el símbolo de articulaciones (Joint Coordinates).
+3.	Seleccionar velocidad (ver punto 4).
+4.	Mantener presionado el botón de hombre muerto en su posición intermedia.
+5.	Presionar la tecla correspondiente a la articulación que se desea desplazar, en dirección positiva (+) o negativa (−).
+6.	Soltar la tecla para detener el movimiento y repetir el procedimiento con las demás articulaciones.
+
+
+
+| Articulación | Función | Teclas del Teach Pendant |
+|---|---|---|
+| **S (Swivel)** | Giro de la base | `X−/S−` y `X+/S+` |
+| **L (Lower arm)** | Movimiento del brazo inferior | `Y−/L−` y `Y+/L+` |
+| **U (Upper arm)** | Movimiento del brazo superior | `Z−/U−` y `Z+/U+` |
+| **R (Roll)** | Giro de la muñeca | `X−/R−` y `X+/R+` |
+| **B (Bend)** | Inclinación de la muñeca | `Y−/B−` y `Y+/B+` |
+| **T (Twist)** | Giro del eje terminal | `Z−/T−` y `Z+/T+` |
+| **7 (Prismática externa)** | Banda de desplazamiento robot | `Z−/T−` y `Z+/T+` |
+| **8 (Rotacional externa)** | Giro de disco externo | `Z−/T−` y `Z+/T+` |
+
+##3.4. Movimiento manual en coordenadas cartesianas
+El modo cartesiano permite controlar el movimiento del TCP utilizando un sistema de referencia con tres ejes ortogonales: X, Y y Z.
+
+Procedimiento para cambiar de JOINT a CARTESIAN
+1.	Detener cualquier movimiento soltando las teclas de los ejes.
+2.	Presionar COORD hasta seleccionar el símbolo Cartesian Coordinates, representado por tres ejes con un cuadrado amarillo.
+3.	Comprobar el icono seleccionado en la barra superior del TEACH.
+4.	Utilizar las teclas correspondientes a traslación o rotación.
+
+A diferencia del modo articular, en este sistema el controlador calcula las variaciones necesarias de las articulaciones para producir el movimiento cartesiano solicitado.
+
+##3.4.1. Movimientos de traslación
+Para realizar desplazamientos lineales del TCP, se utiliza el primer grupo de teclas del TEACH.
+
+| Teclas | Movimiento |
+|---|---|
+| `X+/S+` | Traslación en dirección X positiva. |
+| `X−/S−` | Traslación en dirección X negativa. |
+| `Y+/L+` | Traslación en dirección Y positiva. |
+| `Y−/L−` | Traslación en dirección Y negativa. |
+| `Z+/U+` | Traslación en dirección Z positiva. |
+| `Z−/U−` | Traslación en dirección Z negativa. |
+
+##3.4.2. Movimientos de rotación
+Para modificar la orientación del TCP, se utiliza el segundo grupo de teclas, correspondiente a los ejes de muñeca.
+
+| Teclas | Movimiento |
+|---|---|
+| `X+/R+` | Rotación positiva alrededor del eje X. |
+| `X−/R−` | Rotación negativa alrededor del eje X. |
+| `Y+/B+` | Rotación positiva alrededor del eje Y. |
+| `Y−/B−` | Rotación negativa alrededor del eje Y. |
+| `Z+/T+` | Rotación positiva alrededor del eje Z. |
+| `Z−/T−` | Rotación negativa alrededor del eje Z. |
+
+En el movimiento cartesiano, las rotaciones permiten modificar la orientación de la herramienta respecto al sistema de referencia seleccionado. El sentido positivo de las rotaciones se interpreta mediante la regla de la mano derecha, tomando como referencia la dirección positiva del eje respectivo.
+Es importante aclarar que, aunque las teclas están identificadas también con las articulaciones R, B y T, en modo cartesiano representan rotaciones respecto a los ejes X, Y y Z. El controlador puede movilizar varias articulaciones simultáneamente para producir la orientación deseada
+
 ## 4. Niveles de Velocidad 
 
 
