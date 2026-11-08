@@ -19,7 +19,7 @@ Los robots industriales **Motoman MH6**, fabricado por Yaskawa, y **IRB 140**, f
 | Repetibilidad de posicionamiento | ±0.08 mm | ±0.03 mm |
 | Peso aproximado del manipulador | 130 kg | 98 kg|
 | Sistema de accionamiento | Servomotores eléctricos de CA | Servomotores eléctricos de CA |
-| Tipo de articulaciones | 6 articulaciones rotacionales | 6 articulaciones rotacionales |
+| Tipo de articulaciones | 6 articulaciones rotacionales, más 2 ejes externos | 6 articulaciones rotacionales |
 | Controlador | Motoman DX100 | ABB IRC5 |
 | Lenguaje de programación | INFORM | RAPID |
 | Interfaz de programación | Teach Pendant Motoman | FlexPendant ABB |
