@@ -497,10 +497,7 @@ En cuanto a su presentación e interfaz, percibimos que RoboDK tiene una aparien
 
 ![Diagrama de flujo](./images/diagram.png)
 
-  
 
-## 8. Plano de Planta
-## 9. Rutina
 ### Referencias
 
 1. Yaskawa Motoman. *MOTOMAN-MH6 Instructions*. Manual de especificaciones y operación del manipulador.
