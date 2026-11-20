@@ -64,7 +64,7 @@ $$
 0\leq t\leq12\pi
 $$
 
-El intervalo se dividió en **2160 segmentos**, obteniendo una secuencia de puntos que permite reproducir la figura mediante movimientos lineales consecutivos.
+El intervalo se dividió en **2160 segmentos**, obteniendo una secuencia de puntos que permite reproducir la figura mediante movimientos lineales consecutivos. Vale la pena mencionar que esto en el manipulador real hubiera tomado demasiado tiempo en ejecutarse, por lo que al momento de implementarse se redujeron los puntos a 50. En la simulación si se aprecia el resultado con la cantidad correcta.
 
 Finalmente, se aplicaron tres transformaciones geométricas:
 
@@ -147,14 +147,5 @@ La ejecución se organiza en una secuencia que combina movimientos articulares y
 
 Durante el trazado se utiliza una velocidad de **30 mm/s** y se configura `setRounding(0)` para mantener el seguimiento de los puntos programados sin redondeo de trayectoria.
 
-### 5. Resultado
 
-El programa permite generar y ejecutar una trayectoria compuesta por una figura polar y tres nombres mediante programación en Python y RoboDK.
-
-La principal característica de esta implementación es el uso de **dos métodos de generación geométrica**:
-
-- **Muestreo de una función polar:** para obtener la trayectoria de la mariposa.
-- **Vectorización de caracteres:** para transformar los nombres en contornos ejecutables por el robot.
-
-Ambos métodos se integran mediante transformaciones geométricas y movimientos cartesianos, permitiendo automatizar el trazado sin necesidad de definir manualmente los puntos de cada figura.
 
