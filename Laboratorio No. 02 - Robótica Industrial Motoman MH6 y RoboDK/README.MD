@@ -104,6 +104,9 @@ Aunque los valores articulares de esta configuración no se especifican explíci
 | θ₅ (B) | 0° | 0° |
 | θ₆ (T) | 0° | 0° |
 
+La herramienta teach pendant nos ofrece las posiciones articulares reales del robot en dicha posición, sin embargo sus lecturas se dan en el número de pulsos que realiza el enconder. Por lo tanto el anterior ejercicio funciona como un ejercicio de aproximación. 
+
+![Configuración Home2 Real](images/Home2_real.png)
 ### ¿Cuál de las dos configuraciones es mejor?
 
 No es posible establecer que una configuración sea universalmente superior a la otra, dado que ambas responden a necesidades operativas diferentes.
