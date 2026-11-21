@@ -1,5 +1,7 @@
 ### Laboratorio 2.
 
+Para observar el resultado final del laboratorio y su implementación en el robot real, lo invitamos a visitar el siguiente link: [LabSIR UNAL](https://www.youtube.com/watch?v=-P6EwsnRzPE)
+
 ## 1. Cuadro Comparativo
 
 Los robots industriales **Motoman MH6**, fabricado por Yaskawa, y **IRB 140**, fabricado por ABB, son manipuladores seriales antropomórficos de seis grados de libertad. Ambos están diseñados para aplicaciones de automatización industrial, aunque presentan diferencias importantes en alcance, velocidad, precisión y dimensiones.
